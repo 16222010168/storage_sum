@@ -16,13 +16,18 @@ else
 	TOTALSPC=$(awk '{sum += $1};END {print sum}' /tmp/TOTAL`date +%d%m%y`.log)
 	USEDSPC=$(expr $SUMUSED / 1024)
 	PCT=$(awk 'BEGIN{printf "%.2f%\n",('$SUMUSEDSPC'/'$TOTALSPC')*100}')
-	echo ""
-	echo $USEDSPC
-	echo $PCT
+	echo '******************* Storage SUM ************************'
+	echo '\n'
+	echo 'The used storage space is: '$USEDSPC'GB'
+	echo '\n'
+	echo 'Totally storage %used: '$PCT
+	echo '\n'
+	echo '********************************************************'
 	
 	rm /tmp/storage`date +%d%m%y`.log
 	rm /tmp/USED`date +%d%m%y`.log
 	rm /tmp/TOTAL`date +%d%m%y`.log
 	
 fi
+
 
