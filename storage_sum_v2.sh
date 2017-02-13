@@ -15,7 +15,8 @@ else
 	SUMUSEDSPC=$(awk '{sum += $1};END {print sum}' /tmp/USED`date +%d%m%y`.log)
 	TOTALSPC=$(awk '{sum += $1};END {print sum}' /tmp/TOTAL`date +%d%m%y`.log)
 	USEDSPC=$(expr $SUMUSED / 1024)
-	PCT=$(expr $SUMUSEDSPC / $TOTALSPC)
+	PCT=$(awk 'BEGIN{printf "%.2f%\n",('$SUMUSEDSPC'/'$TOTALSPC')*100}')
+	echo ""
 	echo $USEDSPC
 	echo $PCT
 	
