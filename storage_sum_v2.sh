@@ -11,6 +11,8 @@ else
 	
 	
 	SUM=$(awk '{sum += $1};END {print sum}' /tmp/storage`date +%d%m%y`.log)
-	expr $SUM / 1024
+	USEDSPC=$(expr $SUM / 1024)
+	echo $USEDSPC
 	rm /tmp/storage`date +%d%m%y`.log
+	
 fi
